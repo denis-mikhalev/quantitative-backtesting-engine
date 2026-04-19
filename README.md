@@ -31,6 +31,14 @@ Includes a vectorized backtesting engine, a real-time multi-asset scanner (50+ s
 
 ---
 
+## Results Preview
+
+The backtesting engine outputs a full equity curve compared to passive buy-and-hold, along with a drawdown panel. The chart below shows a BTC 4h strategy run over 180 days — the rule-based system preserves capital during the bearish period while buy-and-hold dropped ~7%.
+
+![Equity Curve vs Buy & Hold](docs/images/equity_curve.png)
+
+---
+
 ## Overview
 
 | Component | File | Description |
