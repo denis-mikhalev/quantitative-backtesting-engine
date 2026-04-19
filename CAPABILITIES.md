@@ -1,6 +1,6 @@
 # Quantitative Backtesting Engine — Capabilities
 
-A rule-based statistical trading system for cryptocurrency markets built on top of **Binance public OHLCV data** (via [ccxt](https://github.com/ccxt/ccxt)). No machine learning, no black-box — every decision is explainable and reproducible.
+A rule-based statistical trading system for digital asset markets built on top of **Binance public OHLCV data** (via [ccxt](https://github.com/ccxt/ccxt)). No machine learning, no black-box — every decision is explainable and reproducible.
 
 ---
 

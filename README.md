@@ -1,6 +1,6 @@
 # Quantitative Backtesting Engine
 
-A rule-based quantitative trading signal system for cryptocurrency markets. Generates, ranks, and backtests trading signals using 4 classical technical setups — no machine learning required. Includes a vectorized backtest engine with realistic costs, a multi-asset scanner, and a parameter sweep tool for strategy optimization.
+A rule-based quantitative trading signal system for digital asset markets. Generates, ranks, and backtests trading signals using 4 classical technical setups — no machine learning required. Includes a vectorized backtest engine with realistic costs, a multi-asset scanner, and a parameter sweep tool for strategy optimization.
 
 ---
 
