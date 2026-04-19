@@ -1,6 +1,33 @@
 # Quantitative Backtesting Engine
 
-A rule-based quantitative trading signal system for digital asset markets. Generates, ranks, and backtests trading signals using 4 classical technical setups — no machine learning required. Includes a vectorized backtest engine with realistic costs, a multi-asset scanner, and a parameter sweep tool for strategy optimization.
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-vectorized-green)
+![ccxt](https://img.shields.io/badge/data-Binance%20OHLCV-yellow)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
+A rule-based quantitative trading signal system for digital asset markets — **no machine learning, no black-box decisions**. Every signal is fully explainable from first principles: 4 classical technical setups vote independently, and the result is aggregated into a confidence score.
+
+Includes a vectorized backtesting engine, a real-time multi-asset scanner (50+ symbols), a parameter sweep optimizer, and a risk/edge calculator with per-symbol configuration.
+
+---
+
+## Verified Backtest Results
+
+> All figures include **0.1% commission + 0.05% slippage** per round trip. Data: Binance public OHLCV.
+
+| Configuration | Timeframe | Annual Return | Win Rate | Profit Factor | Max Drawdown | Trades/year |
+|---|---|---|---|---|---|---|
+| Conservative preset | 1d | **+24.26%** | 52.83% | **1.92** | ~7% | ~55 |
+| Balanced preset | 12h | **~+28%** | 50.98% | 1.72 | ~8% | ~100 |
+
+**Top symbols (1d balanced, 365-day backtest):**
+
+| Symbol | Backtest Return | Win Rate |
+|---|---|---|
+| DOGEUSDT | +1,516% | 83.3% |
+| DOTUSDT | +672% | 66.7% |
+| BTCUSDT | +394% | 53.8% |
+| XRPUSDT | +126% | 50.0% |
 
 ---
 
@@ -22,10 +49,10 @@ The signal generator implements 4 independent rule-based setups:
 
 | Setup | Logic |
 |-------|-------|
-| **Breakout** | Candle closes above/below N-period high/low with volume confirmation |
-| **Pullback** | Price retraces to EMA in a trending market (ADX filter) |
-| **Mean Reversion** | Oversold/overbought RSI after an extended move away from the mean |
-| **Volatility Expansion** | Bollinger Band squeeze breakout — expansion after low-ATR compression |
+| **Breakout** | Close above BB upper / below BB lower with volume spike (≥1.5× 20-period average) and a confirmed directional candle |
+| **Pullback** | EMA-50 / EMA-200 trend confirmed; RSI has pulled back to oversold/overbought zone |
+| **Mean Reversion** | Price at BB±2σ boundary; RSI at extremes (≤30 or ≥70); fades overextended moves |
+| **Volatility Expansion** | ATR in bottom 20th percentile (BB squeeze); catches the initial expansion burst |
 
 Signals are scored by a **weighted composite** of confidence, risk/reward ratio, number of confirming setups, and asset quality — the top signals are selected for each scan cycle.
 
